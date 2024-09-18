@@ -1,5 +1,5 @@
-#contactPage{
-    min-height: calc(100vh - 4rem);
+#contactPage {
+
     width: 100vw;
     max-width: 60rem;
     margin: 0 auto;
@@ -10,23 +10,19 @@
     justify-content: center;
 }
 
-.contactPageTitle{
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.clientsDesc{
-    font-weight: 300;
+.contactPageTitle {
+    color: #d8b04a;
     font-size: 1rem;
 }
 
-.clientImgs{
+
+.clientImgs {
     margin: 1rem 0;
     display: flex;
     flex-wrap: wrap;
 }
 
-.clientImg{
+.clientImg {
     object-fit: cover;
     width: 23%;
     min-width: 9rem;
@@ -34,14 +30,9 @@
     padding: 0.25rem;
 }
 
-#clients{
-    padding: 2rem;
-}
-
 .contactDesc {
-    padding: 1rem;
-    font-size: medium;
-    font-weight: 300;
+    font-size: 50px;
+    font-weight: 500;
 }
 
 .contactForm {
@@ -54,24 +45,27 @@
     max-width: 60rem;
 }
 
-.name, .email, .msg{
+.name,
+.email,
+.msg {
     font-size: medium;
     width: 100%;
     max-width: 40rem;
     margin: 0.5rem;
     padding: 0.5rem 1rem;
-    color: white;
+    color: black;
     border: none;
     border-radius: 0.5rem;
-    background: rgb(40, 40, 40);
+    background: white;
 }
 
-.submitBtn{
-    background: white;
+.submitBtn {
+    background: #d8b04a;
     border: none;
     border-radius: 0.5rem;
     padding: 0.75rem 3.5rem;
     margin: 2rem;
+    cursor: pointer;
 }
 
 .links {
@@ -79,9 +73,57 @@
     flex-wrap: wrap;
 }
 
-.link{
+.link {
     object-fit: cover;
     height: 3rem;
     width: 3rem;
     margin: 0 0.75rem;
+}
+
+.contactContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.paragraph {
+    flex: 1;
+    padding: 1rem;
+    text-align: left;
+}
+
+.contactForm {
+    flex: 1;
+    margin: 1rem;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .contactContainer {
+        width: 90%;
+        flex-direction: row; /* Side-by-side layout for tablets */
+    }
+    .paragraph {
+        flex: 1;
+        margin: 0; /* Occupy half of the container width */
+    }
+    .contactForm {
+        flex: 1; /* Occupy the other half of the container width */
+        margin: 0; /* Remove the margin */
+    }
+}
+
+@media (max-width: 768px) {
+    .contactContainer {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+    }
+    .paragraph {
+        order: 1; /* Move the paragraph above the form */
+    }
+    .contactForm {
+        order: 2; /* Form appears below the paragraph */
+    }
 }

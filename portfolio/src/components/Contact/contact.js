@@ -1,46 +1,51 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import "./contact.css";
-import walmart from "../../assets/walmart.png";
-import adobe from "../../assets/adobe.png";
-import microsoft from "../../assets/microsoft.png";
-import facebook from "../../assets/facebook.png";
-import facebookIcon from "../../assets/facebook-icon.png";
-import twitterIcon from "../../assets/twitter.png";
-import youtubeIcon from "../../assets/youtube.png";
-import insagramIcon from "../../assets/instagram.png";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-    return(
-       <section id="contactPage">
-            <div id="clients">
-                <h1 className="contactPageTitle">My Clients</h1>
-                <p className="clientsDesc">this a demo text this a demo textthis a demo textthis a demo textthis a demo textthis a demo textthis a demo text </p>
-                <div className="clientImgs">
-                    <img src={walmart} alt="clientimg" className="clientImg"/>
-                    <img src={adobe} alt="clientimg" className="clientImg"/>
-                    <img src={microsoft} alt="clientimg" className="clientImg"/>
-                    <img src={facebook} alt="clientimg" className="clientImg"/>
-                </div>
-            </div>
-            <div id="contact">
-                <h1 className="contactPageTitle">Contact Me</h1>
-                <span className="contactDesc">Please fill out the form below to discuss any work opportunities.</span>
-                <form className="contactForm">
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_zria99z', 'template_4mt67ca', form.current, 'cyGY5CKzwR4LA4IyBcGk2')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
+
+    return (
+        <section id="contactPage">
+            <div className="contactContainer">
+                <motion.div 
+                    className="paragraph"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                    <h1 className="contactPageTitle">Contact Me</h1>
+                    <span className="contactDesc">Let's build<br/> something together</span>
+                </motion.div>
+                <motion.form 
+                    className="contactForm" 
+                    ref={form} 
+                    onSubmit={sendEmail}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                >
                     <input type="text" className="name"
-                    placeholder="Your Name"/>
+                        placeholder="Your Name" name="your_name" />
                     <input type="email" className="email"
-                    placeholder="Your Email"/>
+                        placeholder="Your Email" name="your_email" />
                     <textarea className="msg" name="message" rows="5" placeholder="Your message"></textarea>
                     <button type="submit" value="send" className="submitBtn">Submit</button>
-                    <div className="links">
-                        <img src={facebookIcon} alt="link" className="link"/>
-                        <img src={twitterIcon} alt="link" className="link"/>
-                        <img src={youtubeIcon} alt="link" className="link"/>
-                        <img src={insagramIcon} alt="link" className="link"/>
-                    </div>
-                </form>
+                </motion.form>
             </div>
-       </section>
+        </section>
     );
 }
 
