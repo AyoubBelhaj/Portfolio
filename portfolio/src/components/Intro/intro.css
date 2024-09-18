@@ -38,7 +38,7 @@
 
 .introParagraph {
     margin-left: 1rem;
-    z-index: 1; /* Ensure it stays on top */
+    z-index: 1; 
 }
 
 .introParagraph.hello {
