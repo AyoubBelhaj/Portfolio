@@ -16,7 +16,6 @@
     position: absolute;
     top: 3rem;
     right: 6rem;
-    z-index: -1;
     object-fit: cover;
     height: 70%;
     border-radius: 50%;
@@ -114,9 +113,10 @@
 
     .bg {
         order: 1;
+        width: auto;
         top: 2rem;
         right: auto;
-        left: 50%;
+        left: 15rem;
         transform: translateX(-50%); 
         height: 50%;
     }
@@ -144,9 +144,9 @@
         margin-bottom: 10rem;
     }
     .bg {
-        top: 0;
+        top: 1.5rem;
         right: auto;
-        left: 50%;
+        left: 8rem;
         transform: translateX(-50%);
         width: 40%;
         height: auto;
